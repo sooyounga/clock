@@ -15,15 +15,18 @@ module top_module(
     hourcounter hc(clk, reset, hhena, hh[7:0]);
     
     always @(posedge clk) begin
-        if (reset) pm <= 0;
-        else if (ena & (hh == 8'h11) & (mm == 8'h59) & (ss == 8'h59)) pm <= ~pm;
-        else pm <= pm;
+        if (reset) 
+			pm <= 0;
+        else if (ena & (hh == 8'h11) & (mm == 8'h59) & (ss == 8'h59)) 
+			pm <= ~pm;
+        else 
+			pm <= pm;
     end
 
 endmodule
 
 module hourcounter(
-	input clk,
+input clk,
 	input reset,
     input enable,
     output reg [7:0] q);
